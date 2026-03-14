@@ -6,24 +6,34 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 - What did the game look like the first time you ran it?
 - List at least two concrete bugs you noticed at the start  
-  (for example: "the secret number kept changing" or "the hints were backwards").
+  -> It's impossible to guess correct number since hints keep repeating. ✓
+  -> The game writes "Attempts Allowed:8", but when you start the game you have 7 attempts. ✓
+  -> Pressing "New Game" button starts a new game but doesn't reset history and doesn't remove game won message. ✓
+  -> Noraml difficulty and Hard diffuculty are flipped. ✓
+  -> Easy diffuculty gives an out of range secret (given number 68, when 1-20 expected). ✓
+  -> Pressing new game button doesn't reset history. ✓
 
 ---
 
 ## 2. How did you use AI as a teammate?
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
+  -> I used Claude Code
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
+  -> AI suggested that check_guess() has alternating type conversion, meaning it would compare str with int giving a wrong result, the suggestion was correct and I fixed the bug, later verifiying it with launching the game.
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+  -> When I asked AI to generate pytest for this bug, he made them without accounting for the fact that the bug was fixed, thus making misleading tests that would produce errors when output was correct.
 
 ---
 
 ## 3. Debugging and testing your fixes
 
 - How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
+  -> Initially the easiest way to verify if the bug was fixed was to simply launch the game and observe if it's working properly, later, after verifying the game worked, I asked Claude to generate pytests to check if the bug was fixed.
+- Describe at least one test you ran (manual or using pytest) and what it showed you about your code.
+  -> Claude created me pytests which verified if check_guess was producing correct answer, and initially they were failing due to Claude's error, after prompting him to re-write these tests everything worked and code looked good.
 - Did AI help you design or understand any tests? How?
+  -> Yes, In the same chat where I prompted AI to find the bug in code and fix it, I prompted it to also create pytests for this bug to verify if it's been fixed.
 
 ---
 
